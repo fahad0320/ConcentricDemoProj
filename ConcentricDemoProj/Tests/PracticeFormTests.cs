@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using System.Threading;
 
 namespace ConcentricDemoProj.Tests
 {
@@ -13,9 +14,16 @@ namespace ConcentricDemoProj.Tests
         [SetUp]
         public void CreateDriver()
         {
-            driver = new ChromeDriver();
-            driver.Manage().Window.Maximize();
-            driver.Navigate().GoToUrl(homePageURL);
+            try
+            {
+                driver = new ChromeDriver();
+                driver.Manage().Window.Maximize();
+                driver.Navigate().GoToUrl(homePageURL);
+            }
+            catch
+            {
+                Thread.Sleep(30000);
+            }
         }
 
         [TearDown]
@@ -55,7 +63,7 @@ namespace ConcentricDemoProj.Tests
 
         }
         [Test]
-        public void VerifyRequiredFields()
+        public void VerifyRequiredFieldsOnPracticeFormView()
         {
             HelperClasses.FunctionsToInteractWithBrowser functionsToInteractWithBrowser = new HelperClasses.FunctionsToInteractWithBrowser(driver);
             functionsToInteractWithBrowser.NavigateToURL(formsViewURL);
