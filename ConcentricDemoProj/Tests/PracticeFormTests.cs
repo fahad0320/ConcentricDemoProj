@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using System;
 using System.Threading;
 
 namespace ConcentricDemoProj.Tests
@@ -17,6 +18,7 @@ namespace ConcentricDemoProj.Tests
             try
             {
                 driver = new ChromeDriver();
+                driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(120);
                 driver.Manage().Window.Maximize();
                 driver.Navigate().GoToUrl(homePageURL);
             }
@@ -35,7 +37,7 @@ namespace ConcentricDemoProj.Tests
             }
         }
         [Test]
-        public void VerifyUserCanSubmitFormAfterFillingAllRequiredFieldsSuccessully()
+        public void VerifyUserCanSubmitFormSuccessully()
         {
             TestData.PracticeForm practiceFormTestData = new TestData.PracticeForm()
             {
@@ -63,7 +65,7 @@ namespace ConcentricDemoProj.Tests
 
         }
         [Test]
-        public void VerifyRequiredFieldsOnPracticeFormView()
+        public void VerifyRequiredFields()
         {
             HelperClasses.FunctionsToInteractWithBrowser functionsToInteractWithBrowser = new HelperClasses.FunctionsToInteractWithBrowser(driver);
             functionsToInteractWithBrowser.NavigateToURL(formsViewURL);
