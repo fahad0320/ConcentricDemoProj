@@ -5,18 +5,18 @@ namespace ConcentricDemoProj.PageObjects
     class FormsView
     {
         IWebDriver driver;
-        HelperClasses.FunctionsToInteractWithBrowser functionsToInteractWithBrowser;
+        HelperClasses.HelperFunctions helperFunctions;
         public FormsView(IWebDriver driver)
         {
             this.driver = driver;
-            functionsToInteractWithBrowser = new HelperClasses.FunctionsToInteractWithBrowser(driver);
+            helperFunctions = new HelperClasses.HelperFunctions(driver);
         }
 
         public static By practiceForm = By.XPath("//span[text()='Practice Form']");
 
         public void ClickOnPracticeForm()
         {
-            functionsToInteractWithBrowser.Click(practiceForm);
+            helperFunctions.Click(practiceForm);
         }
     }
 }

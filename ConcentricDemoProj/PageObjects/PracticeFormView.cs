@@ -5,11 +5,11 @@ namespace ConcentricDemoProj.PageObjects
     class PracticeFormView
     {
         IWebDriver driver;
-        HelperClasses.FunctionsToInteractWithBrowser functionsToInteractWithBrowser;
+        HelperClasses.HelperFunctions helperFunctions;
         public PracticeFormView(IWebDriver driver)
         {
             this.driver = driver;
-            functionsToInteractWithBrowser = new HelperClasses.FunctionsToInteractWithBrowser(driver);
+            helperFunctions = new HelperClasses.HelperFunctions(driver);
         }
 
         public By submitButton = By.Id("submit");
@@ -26,39 +26,39 @@ namespace ConcentricDemoProj.PageObjects
 
         public void ClickOnSubmitButton()
         {
-            functionsToInteractWithBrowser.ScrollToBottomOfPage();
-            functionsToInteractWithBrowser.Click(submitButton);
+            helperFunctions.ScrollToBottomOfPage();
+            helperFunctions.Click(submitButton);
         }
         public void EnterFirstName(string firstNameToEnter)
         {
-            functionsToInteractWithBrowser.EnterValue(firstName, firstNameToEnter);
+            helperFunctions.EnterValue(firstName, firstNameToEnter);
         }
         public void EnterLastName(string lastNameToEnter)
         {
-            functionsToInteractWithBrowser.EnterValue(lastName, lastNameToEnter);
+            helperFunctions.EnterValue(lastName, lastNameToEnter);
         }
         public void SelectGender(string gender)
         {
             if (gender.ToLower() == "male")
             {
-                functionsToInteractWithBrowser.Click(genderMaleLabel);
+                helperFunctions.Click(genderMaleLabel);
             }
             else if (gender.ToLower() == "female")
             {
-                functionsToInteractWithBrowser.Click(genderFemaleLabel);
+                helperFunctions.Click(genderFemaleLabel);
             }
             else
             {
-                functionsToInteractWithBrowser.Click(genderOtherLabel);
+                helperFunctions.Click(genderOtherLabel);
             }
         }
         public void EnterMobileNumber(string mobileNumber)
         {
-            functionsToInteractWithBrowser.EnterValue(mobile, mobileNumber);
+            helperFunctions.EnterValue(mobile, mobileNumber);
         }
         public string GetSuccessMessage()
         {
-            string message = functionsToInteractWithBrowser.GetText(successMessage);
+            string message = helperFunctions.GetText(successMessage);
             return message;
         }
     }

@@ -2,16 +2,25 @@
 {
     class PracticeForm
     {
-        public string firstName { get; set; }
-        public string lastName { get; set; }
-        public string email { get; set; }
-        public string gender { get; set; }
-        public string mobile { get; set; }
-        public string dateOfBirth { get; set; }
-        public string subjects { get; set; }
-        public string hobbies { get; set; }
-        public string picture { get; set; }
-        public string currentAddress { get; set; }
-        public string stateAndCity { get; set; }
+        private string _firstName;
+        private string _lastName;
+        private string _mobile;
+        private string _gender;
+
+        public static PracticeForm Create(string firstName, string lastName, string mobile, string gender)
+        {
+            return new PracticeForm(firstName, lastName, mobile, gender);
+        }
+        private PracticeForm(string firstName, string lastName, string mobile, string gender)
+        {
+            _firstName = firstName;
+            _lastName = lastName;
+            _mobile = mobile;
+            _gender = gender;
+        }
+        public string FirstName => _firstName;
+        public string LastName => _lastName;
+        public string Mobile => _mobile;
+        public string Gender => _gender;
     }
 }
